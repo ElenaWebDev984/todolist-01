@@ -1,10 +1,11 @@
+import {Button} from "./Button.tsx";
 
 
 export const AddTaskForm = () => {
     return (
         <div>
             <input/>
-            <button>+</button>
+            <Button title={'+'} />
         </div>
     );
 };

@@ -1,11 +1,12 @@
+import {Button} from "./Button.tsx";
 
 
 export const FilterButtons = () => {
     return (
         <div>
-            <button>All</button>
-            <button>Active</button>
-            <button>Completed</button>
+            <Button title={'All'} />
+            <Button title={'Active'} />
+            <Button title={'Completed'} />
         </div>
     );
 };
