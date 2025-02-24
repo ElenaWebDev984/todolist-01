@@ -3,13 +3,25 @@ import {AddTaskForm} from "./AddTaskForm.tsx";
 import {TasksList} from "./TasksList.tsx";
 import {FilterButtons} from "./FilterButtons.tsx";
 
+type TodoListItemPropsType = {
+    title: string
+    tasks: TaskType[]
+}
 
-export const TodoListItem = () => {
+
+export type TaskType = {
+    id: number
+    title: string
+    isDone: boolean
+}
+
+
+export const TodoListItem = (props: TodoListItemPropsType) => {
     return (
         <div>
-            <TodoListTitle />
+            <TodoListTitle title={props.title} />
             <AddTaskForm />
-            <TasksList />
+            <TasksList tasks={props.tasks} />
             <FilterButtons />
         </div>
     );
