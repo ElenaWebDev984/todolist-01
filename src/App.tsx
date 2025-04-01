@@ -14,11 +14,14 @@ export const App = () => {
         {id: 6, title: 'RTK query', isDone: false},
     ]
 
-    // TaskType[] === Array<TaskType>
+    // TODO TaskType[] === Array<TaskType>
 
     // UI
     return (
         <div className={'app'}>
+            <TodoListItem title={todoListTitle_1} tasks={task_1}  />
+            <TodoListItem title={todoListTitle_1} tasks={task_1}  />
+            <TodoListItem title={todoListTitle_1} tasks={task_1}  />
             <TodoListItem title={todoListTitle_1} tasks={task_1}  />
         </div>
     )
