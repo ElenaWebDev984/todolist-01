@@ -2,6 +2,11 @@ import './App.css'
 import {TaskType, TodoListItem} from "./TodoListItem.tsx";
 import {useState} from "react";
 
+
+export type FilterValuesType = 'all' | 'active' | 'completed'
+
+//CRUD
+
 export const App = () => {
     // BLL
     const todoListTitle = 'What to learn'
@@ -20,7 +25,7 @@ export const App = () => {
         setTasks(nextState) // передаем в Реакт наше новое состояние (новый набор данных)
     }
 
-const [filter, setFilter] = useState<'all' | 'active' | 'completed'>('all')
+const [filter, setFilter] = useState<FilterValuesType>('all')
 
 let filteredTasks: TaskType[] = [];
     if(filter === 'all') {
@@ -33,6 +38,10 @@ let filteredTasks: TaskType[] = [];
         filteredTasks = tasks.filter(task => task.isDone) // TODO task.isDone === true  =  task.isDone
     }
 
+    const changeTodolistFilter = (newFilterValue: FilterValuesType) => {
+        setFilter(newFilterValue)
+    }
+
     // const tasks =array[0]
     // const setTasks = array[1]
 
@@ -43,6 +52,7 @@ let filteredTasks: TaskType[] = [];
                 title={todoListTitle}
                 tasks={filteredTasks} // передаем только отфильтрованные/проверенные таски
                 deleteTask={deleteTask}
+                changeTodolistFilter={changeTodolistFilter}
             />
         </div>
     )
