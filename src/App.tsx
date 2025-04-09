@@ -20,6 +20,19 @@ export const App = () => {
         setTasks(nextState) // передаем в Реакт наше новое состояние (новый набор данных)
     }
 
+const [filter, setFilter] = useState<'all' | 'active' | 'completed'>('all')
+
+let filteredTasks: TaskType[] = [];
+    if(filter === 'all') {
+        filteredTasks = tasks
+    }
+    if(filter === 'active') {
+        filteredTasks = tasks.filter(task => !task.isDone) // TODO task.isDone === false  =  !task.isDone
+    }
+    if(filter === 'completed') {
+        filteredTasks = tasks.filter(task => task.isDone) // TODO task.isDone === true  =  task.isDone
+    }
+
     // const tasks =array[0]
     // const setTasks = array[1]
 
@@ -28,7 +41,7 @@ export const App = () => {
         <div className={'app'}>
             <TodoListItem
                 title={todoListTitle}
-                tasks={tasks}
+                tasks={filteredTasks} // передаем только отфильтрованные/проверенные таски
                 deleteTask={deleteTask}
             />
         </div>
