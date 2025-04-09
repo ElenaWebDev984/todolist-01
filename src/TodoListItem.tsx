@@ -6,6 +6,7 @@ import {FilterButtons} from "./FilterButtons.tsx";
 type TodoListItemPropsType = {
     title: string
     tasks: TaskType[]
+    deleteTask: (taskId: number) => void // TODO void - означает, что мы передаем в параметрах функцию, у которой отсутствует явный return
 }
 
 
@@ -17,11 +18,12 @@ export type TaskType = {
 
 
 export const TodoListItem = (props: TodoListItemPropsType) => {
+    const {title, tasks, deleteTask} = props
     return (
         <div>
-            <TodoListTitle title={props.title} />
+            <TodoListTitle title={title} />
             <AddTaskForm />
-            <TasksList tasks={props.tasks} />
+            <TasksList tasks={tasks} deleteTask={deleteTask} />
             <FilterButtons />
         </div>
     );

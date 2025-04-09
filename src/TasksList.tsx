@@ -3,9 +3,10 @@ import {TaskType} from "./TodoListItem.tsx";
 
 type TasksListPropsType = {
     tasks: TaskType[]
+    deleteTask: (taskId: number) => void
 }
 
-export const TasksList = ({tasks}: TasksListPropsType) => {
+export const TasksList = ({tasks, deleteTask}: TasksListPropsType) => {
 
     const tasksList = tasks.length === 0
         ? <p>Your List is Empty</p>
@@ -16,7 +17,7 @@ export const TasksList = ({tasks}: TasksListPropsType) => {
                     <li key={task.id}>
                         <input type="checkbox" checked={task.isDone}/>
                         <span>{task.title}</span>
-                        <button>x</button>
+                        <button onClick={() => deleteTask(task.id)}>x</button>
                     </li>
                 )})}
         </ul>
