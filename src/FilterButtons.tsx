@@ -8,9 +8,9 @@ type FilterButtonsPropsType = {
 export const FilterButtons = ({changeTodolistFilter}: FilterButtonsPropsType) => {
     return (
         <div>
-            <Button onClick={() => changeTodolistFilter('all')} title={'All'} />
-            <Button onClick={() => changeTodolistFilter('active')} title={'Active'} />
-            <Button onClick={() => changeTodolistFilter('completed')} title={'Completed'} />
+            <Button onClickHandler={() => changeTodolistFilter('all')} title={'All'} />
+            <Button onClickHandler={() => changeTodolistFilter('active')} title={'Active'} />
+            <Button onClickHandler={() => changeTodolistFilter('completed')} title={'Completed'} />
         </div>
     );
 };
