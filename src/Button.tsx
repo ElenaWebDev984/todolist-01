@@ -1,6 +1,6 @@
 type ButtonPropsType = {
     title: string
-    onClickHandler: () => void // void - это пустоту . Функция без явного return. она ничего не получает в параметрах и ничего не возвращает (возвращает undefined)
+    onClickHandler?: () => void // TODO void - это пустоту . Функция без явного return. она ничего не получает в параметрах и ничего не возвращает (возвращает undefined)
 }
 
 
