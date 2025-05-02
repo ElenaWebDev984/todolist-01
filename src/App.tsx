@@ -3,13 +3,24 @@ import {TaskType, TodoListItem} from "./TodoListItem.tsx";
 import {useState} from "react";
 
 
+// TODO самовызывающаяся функция
+// const [a, b] = (function () {
+//     return [465, () => alert('yo!')]
+// })()   // пишем функцию и сразу же ее вызываем (в той же строке)
+
+// (function () {
+//     console.log('Hello!')
+// })()
+
+
+
 export type FilterValuesType = 'all' | 'active' | 'completed'
 
 //CRUD
 
 export const App = () => {
     // BLL
-    const todoListTitle = 'What to learn'
+    const todoListTitle: string = 'What to learn'
 
    const [tasks, setTasks] = useState<TaskType[]>([
         {id: 1, title: 'HTML&CSS', isDone: true},
@@ -21,8 +32,8 @@ export const App = () => {
     ])
 
     const deleteTask = (taskId: number) => {
-        const nextState: TaskType[] = tasks.filter(task => task.id !== taskId) // получаем новый массив, который не содержит удаленную таску
-        setTasks(nextState) // передаем в Реакт наше новое состояние (новый набор данных)
+        const nextState: TaskType[] = tasks.filter(task => task.id !== taskId) // TODO получаем новый массив, который не содержит удаленную таску
+        setTasks(nextState) // TODO передаем в React наше новое состояние (новый набор данных)
     }
 
 const [filter, setFilter] = useState<FilterValuesType>('all')
@@ -50,7 +61,7 @@ let filteredTasks: TaskType[] = [];
         <div className={'app'}>
             <TodoListItem
                 title={todoListTitle}
-                tasks={filteredTasks} // передаем только отфильтрованные/проверенные таски
+                tasks={filteredTasks} // TODO передаем только отфильтрованные/проверенные таски
                 deleteTask={deleteTask}
                 changeTodolistFilter={changeTodolistFilter}
             />
