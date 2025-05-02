@@ -13,7 +13,7 @@ export const TasksList = ({tasks, deleteTask}: TasksListPropsType) => {
         ? <p>Your List is Empty</p>
         : <ul>
             {tasks.map(task => {
-                // debugger
+                // TODO debugger
                 return (
                     <li key={task.id}>
                         <input type="checkbox" checked={task.isDone}/>

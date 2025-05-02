@@ -3,7 +3,7 @@ import {TaskType, TodoListItem} from "./TodoListItem.tsx";
 import {useState} from "react";
 
 
-// TODO самовызывающаяся функция
+// TODO самовызывающаяся функция IIFE
 // const [a, b] = (function () {
 //     return [465, () => alert('yo!')]
 // })()   // пишем функцию и сразу же ее вызываем (в той же строке)
@@ -36,6 +36,8 @@ export const App = () => {
         setTasks(nextState) // TODO передаем в React наше новое состояние (новый набор данных)
     }
 
+
+// UI
 const [filter, setFilter] = useState<FilterValuesType>('all')
 
 let filteredTasks: TaskType[] = [];
@@ -56,7 +58,7 @@ let filteredTasks: TaskType[] = [];
     // const tasks =array[0]
     // const setTasks = array[1]
 
-    // UI
+
     return (
         <div className={'app'}>
             <TodoListItem
