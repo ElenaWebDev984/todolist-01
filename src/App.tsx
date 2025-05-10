@@ -21,7 +21,7 @@ export type FilterValuesType = 'all' | 'active' | 'completed'
 
 export const App = () => {
 
-    console.log(typeof v1())
+    // console.log(typeof v1())
 
     // TODO DATA (model, BLL) => action
     const todoListTitle: string = 'What to learn'
@@ -45,15 +45,20 @@ export const App = () => {
     }
 
     // create
-const createTask = (title: string) => {
-        const newTask: TaskType = {
-            id: v1(),
-            title: title,
-            isDone: false,
-        }
-    const nextState: TaskType[] = [...tasks, newTask]
-    setTasks(nextState)
-}
+    const createTask = (title: string) => {
+        //  TODO long variant
+         const newTask: TaskType = {
+             id: v1(),
+             title: title,
+             isDone: false,
+         }
+        const nextState: TaskType[] = [...tasks, newTask]
+        setTasks(nextState)
+        // TODO short variant
+        // setTasks([...tasks, {id: v1(), title, isDone: false}])
+    }
+
+
 
 // TODO UI (view) => element for arion ('form', 'button') +
 const [filter, setFilter] = useState<FilterValuesType>('all')
@@ -82,6 +87,7 @@ let filteredTasks: TaskType[] = [];
                 tasks={filteredTasks} // TODO передаем только отфильтрованные/проверенные таски
                 deleteTask={deleteTask}
                 changeTodolistFilter={changeTodolistFilter}
+                createTask={createTask}
             />
         </div>
     )

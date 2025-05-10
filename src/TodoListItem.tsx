@@ -9,6 +9,7 @@ type TodoListItemPropsType = {
     tasks: TaskType[]
     deleteTask: (taskId:string) => void // TODO void - означает, что мы передаем в параметрах функцию, у которой отсутствует явный return
     changeTodolistFilter: (newFilterValue: FilterValuesType) => void
+    createTask: (title: string) => void
 }
 
 
@@ -25,7 +26,7 @@ export const TodoListItem = (props: TodoListItemPropsType) => {
         <div>
             <TodoListTitle title={title} />
             <AddTaskForm />
-            <TasksList tasks={tasks} deleteTask={deleteTask} />
+            <TasksList tasks={tasks} deleteTask={deleteTask}/>
             <FilterButtons changeTodolistFilter={changeTodolistFilter} />
         </div>
     );
