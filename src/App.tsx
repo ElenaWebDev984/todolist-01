@@ -1,6 +1,7 @@
 import './App.css'
 import {TaskType, TodoListItem} from "./TodoListItem.tsx";
 import {useState} from "react";
+import {v1} from "uuid";
 
 
 // TODO самовызывающаяся функция IIFE
@@ -16,28 +17,45 @@ import {useState} from "react";
 
 export type FilterValuesType = 'all' | 'active' | 'completed'
 
-//CRUD
+// TODO CRUD
 
 export const App = () => {
-    // BLL
+
+    console.log(typeof v1())
+
+    // TODO DATA (model, BLL) => action
     const todoListTitle: string = 'What to learn'
 
    const [tasks, setTasks] = useState<TaskType[]>([
-        {id: 1, title: 'HTML&CSS', isDone: true},
-        {id: 2, title: 'JS', isDone: true},
-        {id: 3, title: 'ReactJS', isDone: false},
-        {id: 4, title: 'Redux', isDone: false},
-        {id: 5, title: 'Typescript', isDone: false},
-        {id: 6, title: 'RTK query', isDone: false},
+        {id: v1(), title: 'HTML&CSS', isDone: true},
+        {id: v1(), title: 'JS', isDone: true},
+        {id: v1(), title: 'ReactJS', isDone: false},
+        {id: v1(), title: 'Redux', isDone: false},
+        {id: v1(), title: 'Typescript', isDone: false},
+        {id: v1(), title: 'RTK query', isDone: false},
     ])
 
-    const deleteTask = (taskId: number) => {
+    // const tasks = array[0]
+    // const setTasks = array[1]
+
+    // delete
+    const deleteTask = (taskId: string) => {
         const nextState: TaskType[] = tasks.filter(task => task.id !== taskId) // TODO получаем новый массив, который не содержит удаленную таску
         setTasks(nextState) // TODO передаем в React наше новое состояние (новый набор данных)
     }
 
+    // create
+const createTask = (title: string) => {
+        const newTask: TaskType = {
+            id: v1(),
+            title: title,
+            isDone: false,
+        }
+    const nextState: TaskType[] = [...tasks, newTask]
+    setTasks(nextState)
+}
 
-// UI
+// TODO UI (view) => element for arion ('form', 'button') +
 const [filter, setFilter] = useState<FilterValuesType>('all')
 
 let filteredTasks: TaskType[] = [];
@@ -55,8 +73,6 @@ let filteredTasks: TaskType[] = [];
         setFilter(newFilterValue)
     }
 
-    // const tasks =array[0]
-    // const setTasks = array[1]
 
 
     return (

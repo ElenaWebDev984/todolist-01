@@ -7,13 +7,13 @@ import {FilterValuesType} from "./App.tsx";
 type TodoListItemPropsType = {
     title: string
     tasks: TaskType[]
-    deleteTask: (taskId: number) => void // TODO void - означает, что мы передаем в параметрах функцию, у которой отсутствует явный return
+    deleteTask: (taskId:string) => void // TODO void - означает, что мы передаем в параметрах функцию, у которой отсутствует явный return
     changeTodolistFilter: (newFilterValue: FilterValuesType) => void
 }
 
 
 export type TaskType = {
-    id: number
+    id: string
     title: string
     isDone: boolean
 }
