@@ -1,13 +1,25 @@
 import {Button} from "./Button.tsx";
+import {useRef} from "react";
 
-const
+type AddTaskFormProps = {
+    createTask: (title: string) => void
+}
 
-const createTaskHandler = () => createTask('New Task')
 
-export const AddTaskForm = () => {
+
+export const AddTaskForm = ({createTask}: AddTaskFormProps) => {
+    const taskTitleInput = useRef<HTMLInputElement>(null);
+
+    const createTaskHandler = () => {
+        if (taskTitleInput.current) {
+            createTask(taskTitleInput.current.value)
+            taskTitleInput.current.value = ''
+        }
+    }
+
     return (
         <div>
-            <input/>
+            <input ref={taskTitleInput}/>
             <Button title={'+'} onClickHandler={createTaskHandler} />
         </div>
     );
