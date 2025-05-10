@@ -47,15 +47,15 @@ export const App = () => {
     // create
     const createTask = (title: string) => {
         //  TODO long variant
-         const newTask: TaskType = {
-             id: v1(),
-             title: title,
-             isDone: false,
-         }
-        const nextState: TaskType[] = [...tasks, newTask]
-        setTasks(nextState)
+        //  const newTask: TaskType = {
+        //      id: v1(),
+        //      title: title,
+        //      isDone: false,
+        //  }
+        // const nextState: TaskType[] = [...tasks, newTask]
+        // setTasks(nextState)
         // TODO short variant
-        // setTasks([...tasks, {id: v1(), title, isDone: false}])
+        setTasks([...tasks, {id: v1(), title, isDone: false}])
     }
 
 
