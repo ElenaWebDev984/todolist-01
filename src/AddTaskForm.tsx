@@ -1,25 +1,24 @@
 import {Button} from "./Button.tsx";
-import {useRef} from "react";
+import {useState} from "react";
 
 type AddTaskFormProps = {
     createTask: (title: string) => void
 }
 
 
+// TODO создаем контролируемый input
 
 export const AddTaskForm = ({createTask}: AddTaskFormProps) => {
-    const taskTitleInput = useRef<HTMLInputElement>(null);
+    const [taskTitle, setTaskTitle] = useState("New Task");
 
     const createTaskHandler = () => {
-        if (taskTitleInput.current) {
-            createTask(taskTitleInput.current.value)
-            taskTitleInput.current.value = ''
-        }
+        createTask(taskTitle);
     }
 
     return (
         <div>
-            <input ref={taskTitleInput}/>
+            <input value={taskTitle}
+            onChange={(e) => setTaskTitle(e.currentTarget.value)}/>
             <Button title={'+'} onClickHandler={createTaskHandler} />
         </div>
     );
