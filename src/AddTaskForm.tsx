@@ -9,10 +9,12 @@ type AddTaskFormProps = {
 // TODO создаем контролируемый input
 
 export const AddTaskForm = ({createTask}: AddTaskFormProps) => {
-    const [taskTitle, setTaskTitle] = useState("New Task");
+    const [taskTitle, setTaskTitle] = useState("");
+    console.log(taskTitle);
 
     const createTaskHandler = () => {
         createTask(taskTitle);
+        setTaskTitle("");
     }
 
     return (
