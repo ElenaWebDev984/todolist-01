@@ -20,9 +20,9 @@ export const AddTaskForm = ({createTask}: AddTaskFormProps) => {
     return (
         <div>
             <input value={taskTitle}
-            onChange={(e) => setTaskTitle(e.currentTarget.value)}
-            disabled={!Boolean(taskTitle)}/>
-            <Button title={'+'} onClickHandler={createTaskHandler} />
+            onChange={(e) => setTaskTitle(e.currentTarget.value)}/>
+            <Button title={'+'} onClickHandler={createTaskHandler}
+                    disabled={!Boolean(taskTitle)}/>
         </div>
     );
 };
