@@ -19,8 +19,14 @@ export const AddTaskForm = ({createTask}: AddTaskFormProps) => {
 
     return (
         <div>
-            <input value={taskTitle}
-            onChange={(e) => setTaskTitle(e.currentTarget.value)}/>
+            <input
+                value={taskTitle}
+                onChange={(e) => setTaskTitle(e.currentTarget.value)}
+                onKeyDown={(e) => {
+                    if (e.key === "Enter" && taskTitle && taskTitle.length <= 10) {
+                        createTaskHandler();
+                    }
+                }}/>
             <Button title={'+'} onClickHandler={createTaskHandler}
                     disabled={!Boolean(taskTitle) || taskTitle.length > 10}/>
             {!taskTitle && <div>Task title is required</div>}
