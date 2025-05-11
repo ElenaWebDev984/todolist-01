@@ -22,8 +22,10 @@ export const AddTaskForm = ({createTask}: AddTaskFormProps) => {
             <input value={taskTitle}
             onChange={(e) => setTaskTitle(e.currentTarget.value)}/>
             <Button title={'+'} onClickHandler={createTaskHandler}
-                    disabled={!Boolean(taskTitle)}/>
+                    disabled={!Boolean(taskTitle) || taskTitle.length > 10}/>
             {!taskTitle && <div>Task title is required</div>}
+            {taskTitle && taskTitle.length <= 10 && <div>Title should be max 10 characters</div>}
+            {taskTitle.length > 10 && <div style={{color: 'red'}}>Title is too long</div>}
         </div>
     );
 };
