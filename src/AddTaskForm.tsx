@@ -23,6 +23,7 @@ export const AddTaskForm = ({createTask}: AddTaskFormProps) => {
             onChange={(e) => setTaskTitle(e.currentTarget.value)}/>
             <Button title={'+'} onClickHandler={createTaskHandler}
                     disabled={!Boolean(taskTitle)}/>
+            {!taskTitle && <div>Task title is required</div>}
         </div>
     );
 };
