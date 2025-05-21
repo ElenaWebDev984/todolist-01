@@ -5,7 +5,7 @@ import {TaskType} from "./TodoListItem.tsx";
 type TasksListPropsType = {
     tasks: TaskType[]
     deleteTask: (taskId: string) => void
-    changeTaskStatus: (taskId: string) => void
+    changeTaskStatus: (taskId: string, isDone: boolean) => void
 }
 
 export const TasksList = ({tasks, deleteTask, changeTaskStatus}: TasksListPropsType) => {
@@ -20,7 +20,8 @@ export const TasksList = ({tasks, deleteTask, changeTaskStatus}: TasksListPropsT
                     <li key={task.id}>
                         <input type="checkbox"
                                checked={task.isDone}
-                               onChange={() => changeTaskStatus(task.id)}/>
+                               onChange={(e) => changeTaskStatus(task.id, e.currentTarget.checked)}/>
+                        {/*TODO (e) - event (объект-событие. генерируется браузером при наступлении любого события)*/}
                         <span>{task.title}</span>
                         <Button onClickHandler={() => deleteTask(task.id)} title='x'/>
                     </li>
