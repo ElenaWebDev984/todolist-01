@@ -60,11 +60,11 @@ export const App = () => {
 
 //     update tasks => update tasks status (isDone)
 
-    const changeTaskStatus = (taskId: string) => {
+    const changeTaskStatus = (taskId: string, isDone: boolean) => {
         // TODO выполняем выборочное/условное преобразование массива
         // TODO variant 1
-        // const nextState: TaskType[] = tasks.map(task => task.id === taskId ? {...task, isDone: !task.isDone} : task)
-        // setTasks(nextState)
+        const nextState: TaskType[] = tasks.map(task => task.id === taskId ? {...task, isDone: isDone} : task)  // TODO added new status for task
+        setTasks(nextState)
         // TODO variant 2
         setTasks(tasks.map(task => task.id === taskId ? {...task, isDone: !task.isDone} : task))
     }
