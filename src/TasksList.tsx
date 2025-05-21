@@ -1,5 +1,6 @@
 import {Button} from "./Button.tsx";
 import {TaskType} from "./TodoListItem.tsx";
+import {ChangeEvent} from "react";
 
 
 type TasksListPropsType = {
@@ -14,16 +15,19 @@ export const TasksList = ({tasks, deleteTask, changeTaskStatus}: TasksListPropsT
         ? <p>Your List is Empty</p>
         : <ul>
             {tasks.map(task => {
+                const deleteTaskHandler = () => deleteTask(task.id)
+                const changeTaskStatusHandler = (e: ChangeEvent<HTMLInputElement>) => changeTaskStatus(task.id, e.currentTarget.checked)
+
                 // TODO debugger
                 return (
                     // TODO key задается любому внешнему элементу списка
                     <li key={task.id}>
                         <input type="checkbox"
                                checked={task.isDone}
-                               onChange={(e) => changeTaskStatus(task.id, e.currentTarget.checked)}/>
+                               onChange={changeTaskStatusHandler}/>
                         {/*TODO (e) - event (объект-событие. генерируется браузером при наступлении любого события)*/}
                         <span>{task.title}</span>
-                        <Button onClickHandler={() => deleteTask(task.id)} title='x'/>
+                        <Button onClickHandler={deleteTaskHandler} title='x'/>
                     </li>
                 )
             })}
