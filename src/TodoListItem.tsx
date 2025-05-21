@@ -25,14 +25,16 @@ export const noop = () => {}; // TODO ← "no operation" (пустая функ�
 
 
 export const TodoListItem = (props: TodoListItemPropsType) => {
-    const {title, tasks, deleteTask, changeTodolistFilter, createTask} = props
+
+
+    const {title, tasks, deleteTask, changeTodolistFilter, createTask, changeTaskStatus} = props
     return (
         <div>
             <TodoListTitle title={title} />
             <AddTaskForm createTask={createTask} />
             <TasksList tasks={tasks}
                        deleteTask={deleteTask}
-                       changeTaskStatus={noop}/>
+                       changeTaskStatus={changeTaskStatus}/>
             <FilterButtons changeTodolistFilter={changeTodolistFilter} />
         </div>
     );

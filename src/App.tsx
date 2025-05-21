@@ -58,6 +58,17 @@ export const App = () => {
         setTasks([...tasks, {id: v1(), title, isDone: false}])
     }
 
+//     update tasks => update tasks status (isDone)
+
+    const changeTaskStatus = (taskId: string) => {
+        // TODO выполняем выборочное/условное преобразование массива
+        // TODO variant 1
+        // const nextState: TaskType[] = tasks.map(task => task.id === taskId ? {...task, isDone: !task.isDone} : task)
+        // setTasks(nextState)
+        // TODO variant 2
+        setTasks(tasks.map(task => task.id === taskId ? {...task, isDone: !task.isDone} : task))
+    }
+
 
 
 // TODO UI (view) => element for arion ('form', 'button') +
@@ -88,6 +99,7 @@ let filteredTasks: TaskType[] = [];
                 deleteTask={deleteTask}
                 changeTodolistFilter={changeTodolistFilter}
                 createTask={createTask}
+                changeTaskStatus={changeTaskStatus}
             />
         </div>
     )
