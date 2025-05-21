@@ -25,7 +25,8 @@ export const noop = () => {}; // TODO ← "no operation" (пустая функ�
 
 
 export const TodoListItem = (props: TodoListItemPropsType) => {
-
+    // TODO ← все пропсы в консоли
+    console.log("TodoListItem props:", props);
 
     const {title, tasks, deleteTask, changeTodolistFilter, createTask, changeTaskStatus} = props
     return (
