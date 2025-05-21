@@ -10,6 +10,7 @@ type TodoListItemPropsType = {
     deleteTask: (taskId:string) => void // TODO void - означает, что мы передаем в параметрах функцию, у которой отсутствует явный return
     changeTodolistFilter: (newFilterValue: FilterValuesType) => void
     createTask: (title: string) => void
+    changeTaskStatus: (taskId: string) => void
 }
 
 
@@ -19,6 +20,9 @@ export type TaskType = {
     isDone: boolean
 }
 
+// TODO Выносим заглушку в константу (вне компонента)
+export const noop = () => {}; // TODO ← "no operation" (пустая функция)
+
 
 export const TodoListItem = (props: TodoListItemPropsType) => {
     const {title, tasks, deleteTask, changeTodolistFilter, createTask} = props
@@ -26,7 +30,9 @@ export const TodoListItem = (props: TodoListItemPropsType) => {
         <div>
             <TodoListTitle title={title} />
             <AddTaskForm createTask={createTask} />
-            <TasksList tasks={tasks} deleteTask={deleteTask}/>
+            <TasksList tasks={tasks}
+                       deleteTask={deleteTask}
+                       changeTaskStatus={noop}/>
             <FilterButtons changeTodolistFilter={changeTodolistFilter} />
         </div>
     );
