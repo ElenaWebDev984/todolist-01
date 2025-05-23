@@ -9,6 +9,7 @@
   border: 3px dashed lightcoral;
   border-radius: 5px;
   text-align: center;
+  background-color: #f7f1f7;
 }
 
 .td-title {
@@ -21,9 +22,19 @@
   margin-bottom: 30px;
 }
 
-.required {
+.text-error {
   margin-top: 10px;
-  color: lightcoral;
+  color: red;
+  font-weight: bold;
+}
+
+.error {
+  border: 2px solid red;
+}
+
+p {
+  text-align: center;
+  color: #7d1146;
 }
 
 .tasks-list {
