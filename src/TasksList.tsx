@@ -13,7 +13,7 @@ export const TasksList = ({tasks, deleteTask, changeTaskStatus}: TasksListPropsT
 
     const tasksList = tasks.length === 0
         ? <p>Your List is Empty</p>
-        : <ul>
+        : <ul className='tasks-list'>
             {tasks.map(task => {
                 const deleteTaskHandler = () => deleteTask(task.id)
                 const changeTaskStatusHandler = (e: ChangeEvent<HTMLInputElement>) => changeTaskStatus(task.id, e.currentTarget.checked)
@@ -21,7 +21,7 @@ export const TasksList = ({tasks, deleteTask, changeTaskStatus}: TasksListPropsT
                 // TODO debugger
                 return (
                     // TODO key задается любому внешнему элементу списка
-                    <li key={task.id}>
+                    <li key={task.id} className={task.isDone ? 'task-done' : 'task'}>
                         <input type="checkbox"
                                checked={task.isDone}
                                onChange={changeTaskStatusHandler}/>

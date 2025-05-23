@@ -1,10 +1,11 @@
 type TodoListTitlePropsType = {
-    title: string;
+    title: string
+    className: string
 }
 
-export const TodoListTitle = (props: TodoListTitlePropsType) => {
+export const TodoListTitle = ({title, className}: TodoListTitlePropsType) => {
     return (
-        <h3>{props.title}</h3>
+        <h3 className={className}>{title}</h3>
     );
 };
 
