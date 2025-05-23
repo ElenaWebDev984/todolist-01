@@ -18,7 +18,7 @@ export const AddTaskForm = ({createTask}: AddTaskFormProps) => {
     }
 
     return (
-        <div>
+        <div className='input-wrapper'>
             <input
                 value={taskTitle}
                 onChange={(e) => setTaskTitle(e.currentTarget.value)}
@@ -29,7 +29,7 @@ export const AddTaskForm = ({createTask}: AddTaskFormProps) => {
                 }}/>
             <Button title={'+'} onClickHandler={createTaskHandler}
                     disabled={!Boolean(taskTitle) || taskTitle.length > 10}/>
-            {!taskTitle && <div>Task title is required</div>}
+            {!taskTitle && <div className='required'>Task title is required</div>}
             {taskTitle && taskTitle.length <= 10 && <div>Title should be max 10 characters</div>}
             {taskTitle.length > 10 && <div style={{color: 'red'}}>Title is too long</div>}
         </div>
