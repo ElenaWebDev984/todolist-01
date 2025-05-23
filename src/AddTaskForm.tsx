@@ -10,12 +10,14 @@ type AddTaskFormProps = {
 
 export const AddTaskForm = ({createTask}: AddTaskFormProps) => {
     const [taskTitle, setTaskTitle] = useState("");
-    console.log(taskTitle);
+    const [error, setError] = useState<boolean>(false);
 
     const createTaskHandler = () => {
         const trimmedTitle = taskTitle.trim();
         if (trimmedTitle) {
             createTask(taskTitle);
+        } else {
+            setError(true);
         }
         setTaskTitle("");
     }
@@ -24,7 +26,13 @@ export const AddTaskForm = ({createTask}: AddTaskFormProps) => {
         <div className='input-wrapper'>
             <input
                 value={taskTitle}
-                onChange={(e) => setTaskTitle(e.currentTarget.value)}
+                className={!!error ? "error" : undefined}
+                onChange={(e) => {
+                    error && setError(false);
+                    if (taskTitle.length < 10) {
+                        setTaskTitle(e.currentTarget.value)
+                    }
+                }}
                 onKeyDown={(e) => {
                     if (e.key === "Enter" && taskTitle && taskTitle.length <= 10) {
                         createTaskHandler();
@@ -32,9 +40,9 @@ export const AddTaskForm = ({createTask}: AddTaskFormProps) => {
                 }}/>
             <Button title={'+'} onClickHandler={createTaskHandler}
                     disabled={!Boolean(taskTitle) || taskTitle.length > 10}/>
-            {!taskTitle && <div className='required'>Task title is required</div>}
-            {taskTitle && taskTitle.length <= 10 && <div>Title should be max 10 characters</div>}
-            {taskTitle.length > 10 && <div style={{color: 'red'}}>Title is too long</div>}
+            {!taskTitle && <div className='text-error'>Task title is required</div>}
+            {taskTitle && taskTitle.length <= 10 && <div className='text-error'>Title should be max 10 characters</div>}
+            {taskTitle.length > 10 && <div className='text-error'>Title is too long</div>}
         </div>
     );
 };
