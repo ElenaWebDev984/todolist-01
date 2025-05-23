@@ -13,7 +13,10 @@ export const AddTaskForm = ({createTask}: AddTaskFormProps) => {
     console.log(taskTitle);
 
     const createTaskHandler = () => {
-        createTask(taskTitle);
+        const trimmedTitle = taskTitle.trim();
+        if (trimmedTitle) {
+            createTask(taskTitle);
+        }
         setTaskTitle("");
     }
 
