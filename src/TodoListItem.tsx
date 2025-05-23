@@ -11,6 +11,7 @@ type TodoListItemPropsType = {
     changeTodolistFilter: (newFilterValue: FilterValuesType) => void
     createTask: (title: string) => void
     changeTaskStatus: (taskId: string, isDone: boolean) => void
+    filter: FilterValuesType
 }
 
 
@@ -29,15 +30,16 @@ export const TodoListItem = (props: TodoListItemPropsType) => {
     // TODO ← все пропсы в консоли
     // console.log("TodoListItem props:", props);
 
-    const {title, tasks, deleteTask, changeTodolistFilter, createTask, changeTaskStatus} = props
+    const {title, tasks, deleteTask, changeTodolistFilter, createTask, changeTaskStatus, filter} = props
     return (
-        <div>
-            <TodoListTitle title={title} />
+        <div className='todolist'>
+            <TodoListTitle className='td-title' title={title} />
             <AddTaskForm createTask={createTask} />
             <TasksList tasks={tasks}
                        deleteTask={deleteTask}
                        changeTaskStatus={changeTaskStatus}/>
-            <FilterButtons changeTodolistFilter={changeTodolistFilter} />
+            <FilterButtons changeTodolistFilter={changeTodolistFilter}
+            filter={filter}/>
         </div>
     );
 };

@@ -100,6 +100,7 @@ let filteredTasks: TaskType[] = [];
                 changeTodolistFilter={changeTodolistFilter}
                 createTask={createTask}
                 changeTaskStatus={changeTaskStatus}
+                filter={filter}
             />
         </div>
     )

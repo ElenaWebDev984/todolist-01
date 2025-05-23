@@ -3,14 +3,21 @@ import {FilterValuesType} from "./App.tsx";
 
 type FilterButtonsPropsType = {
     changeTodolistFilter: (newFilterValue: FilterValuesType) => void
+    filter: FilterValuesType
 }
 
-export const FilterButtons = ({changeTodolistFilter}: FilterButtonsPropsType) => {
+export const FilterButtons = ({changeTodolistFilter, filter}: FilterButtonsPropsType) => {
     return (
-        <div>
-            <Button onClickHandler={() => changeTodolistFilter('all')} title={'All'} />
-            <Button onClickHandler={() => changeTodolistFilter('active')} title={'Active'} />
-            <Button onClickHandler={() => changeTodolistFilter('completed')} title={'Completed'} />
+        <div className="buttons-wrapper">
+            <Button className={filter === 'all' ? 'filter-btn-active' : ''}
+                    onClickHandler={() => changeTodolistFilter('all')}
+                    title={'All'} />
+            <Button className={filter === 'active' ? 'filter-btn-active' : ''}
+                    onClickHandler={() => changeTodolistFilter('active')}
+                    title={'Active'} />
+            <Button className={filter === 'completed' ? 'filter-btn-active' : ''}
+                    onClickHandler={() => changeTodolistFilter('completed')}
+                    title={'Completed'} />
         </div>
     );
 };
